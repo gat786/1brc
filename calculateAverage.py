@@ -9,13 +9,13 @@ def get_file_chunks(
     max_cpu: int = 8,
 ) -> tuple[int, list[tuple[str, int, int]]]:
     """Split flie into chunks"""
-    cpu_count = min(max_cpu, mp.cpu_count())
+    cpu_count = max(max_cpu, mp.cpu_count())
 
     file_size = os.path.getsize(file_name)
     chunk_size = file_size // cpu_count
 
     start_end = list()
-    with open(file_name, encoding="utf-8", mode="r+b") as f:
+    with open(file_name, mode="r+b") as f:
 
         def is_new_line(position):
             if position == 0:
@@ -62,7 +62,7 @@ def _process_file_chunk(
 ) -> dict:
     """Process each file chunk in a different process"""
     result = dict()
-    with open(file_name, encoding="utf-8", mode="rb") as f:
+    with open(file_name, mode="rb") as f:
         f.seek(chunk_start)
         gc_disable()
         for line in f:
