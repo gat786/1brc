@@ -1,7 +1,7 @@
-import math
 from concurrent.futures import ThreadPoolExecutor
 import os
 import sys
+import math
 import tempfile
 
 from typing_extensions import Dict, Tuple
@@ -27,10 +27,10 @@ def process(file_name: str):
         city_data[city_name] = (temp_double, temp_double, temp_double, 1)
 
   for city, city_values in city_data.items():
-    min = city_values[0]
-    max = city_values[1]
-    mean = city_values[2] / city_values[3]
-    print(f"{city}={min}/{mean}/{max}")
+    minv = city_values[0]
+    maxv = city_values[1]
+    meanv = city_values[2] / city_values[3]
+    print(f"{city}={minv}/{meanv}/{maxv}")
   return 0
 
 if __name__ == "__main__":

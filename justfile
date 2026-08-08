@@ -1,4 +1,8 @@
 vmname := "brcvm"
+big_measurements   := "measurements.txt"
+medium_measurements := "measurements_100000000.txt"
+small_measurements  := "measurements_10000000.txt"
+
 
 create_vm:
   #!/bin/bash
@@ -16,10 +20,22 @@ remove_vm:
 
 destroy_vm: stop_vm remove_vm
 
-run_brc:
+p_run_brc_s:
   #!/bin/bash
-  MEASUREMENTS_FILE=$PWD/challenge/data/measurements.txt uv run python-solution/main.py
+  MEASUREMENTS_FILE=$PWD/challenge/data/{{small_measurements}} uv run python-solution/main.py
 
-run_brc_gpt:
+p_run_brc_gpt_s:
   #!/bin/bash
-  MEASUREMENTS_FILE=$PWD/challenge/data/measurements.txt uv run python-solution/gpt-sol.py
+  MEASUREMENTS_FILE=$PWD/challenge/data/{{small_measurements}} uv run python-solution/gpt-sol.py
+
+g_run_brc_s:
+  #!/bin/bash
+  MEASUREMENTS_FILE=$PWD/challenge/data/{{small_measurements}} go run go-solution/main.go
+
+g_run_brc_m:
+  #!/bin/bash
+  MEASUREMENTS_FILE=$PWD/challenge/data/{{medium_measurements}} go run go-solution/main.go
+
+g_run_brc_b:
+  #!/bin/bash
+  MEASUREMENTS_FILE=$PWD/challenge/data/{{big_measurements}} go run go-solution/main.go
