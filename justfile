@@ -39,3 +39,15 @@ g_run_brc_m:
 g_run_brc_b:
   #!/bin/bash
   MEASUREMENTS_FILE=$PWD/challenge/data/{{big_measurements}} go run go-solution/main.go
+
+gc_run_brc_s:
+  #!/bin/bash
+  MEASUREMENTS_FILE=$PWD/challenge/data/{{small_measurements}} go run go-solution-claude/main.go
+
+gc_run_brc_m:
+  #!/bin/bash
+  MEASUREMENTS_FILE=$PWD/challenge/data/{{medium_measurements}} go run go-solution-claude/main.go
+
+gc_run_brc_b:
+  #!/bin/bash
+  MEASUREMENTS_FILE=$PWD/challenge/data/{{big_measurements}} go run go-solution-claude/main.go

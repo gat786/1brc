@@ -65,6 +65,6 @@ func main() {
 	}
 
 	for key, value := range results {
-		fmt.Printf("%s: %v/%v/%v/%v\n", key, value.minv, value.maxv, value.total, value.count)
+		fmt.Printf("%s: %v/%v/%v\n", key, value.minv, (value.total / float32(value.count)), value.maxv)
 	}
 }
